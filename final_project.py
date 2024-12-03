@@ -7,54 +7,95 @@ Linear Algebra Calculator
 Final Project - CICS 110
 
 '''
-
+import numpy as np
 
 def matrix(rows, columns):
-    matrix = []
-    one_row = []
-    for i in range(columns):
-        one_row.append('X')
+    A = np.round(np.empty((rows, columns)))
     for i in range(rows):
-        matrix.append(one_row)
-    return(matrix)
+        for j in range(columns):
+            A[i][j] = float(input(f'Input element for row {i+1}, column {j+1}:'))
+            print()
+            print("============================================")
+            print()
+            print_matrix(A)
+            print()
+            print("============================================")
+            print()
+    return A
+       
 
-# Produces empty matrix with dimensions that are input. 
+# Produces matrix (with elements) with dimensions that are input. 
 # Parameters are number of rows and number of columns
-# Returns list of lists (empty matrix)
+# Returns array representing matrix (list of lists)
 
 def print_matrix(matrix):
     for elem in matrix:
         print(elem)
     return(None)
 
-# Prints matrix 
-# Parameter is matrix
+# Prints matrix, row by row
+# Parameter is matrix array
 # Returns nothing
 
-def input_matrix(element, row, column, matrix):
-    matrix[row][column] = element
-    return(matrix)
+def dot():
+    rows = int(input('Please give the dimensions of your matrices. # of rows?:'))
+    print()
+    columns = int(input('# of columns?:'))
+    print()
+    print('Please give entries for matrix A:')
+    print()
+    A = matrix(rows, columns)
+    print()
+    print('Please give entries for matrix B:')
+    print()
+    B = matrix(rows, columns)
+    print()
+    print_matrix(np.dot(np.transpose(A), B))
+    return(np.dot(np.transpose(A), B))
 
-# Inserts some element into a given coordinate.
-# Parameters are element, row, column, matrix. 
-# Returns new matrix
+def scalar_m():
+    rows = int(input('Please give the dimensions of your matrices. # of rows?:'))
+    print()
+    columns = int(input('# of columns?:'))
+    print()
+    print('Please give entries for matrix A:')
+    print()
+    A = matrix(rows, columns)
+    print()
+    c = int(input('Please input your scalar you would like to multiply by:'))
+    print_matrix(c * A)
+    return(c * A)
 
-def make_matrix():
-    i = int(input("How many rows?:"))
-    j = int(input("How many columns?:"))
-    A = matrix(i,j)
-    print_matrix(A)
-    for m in range(i):
-        for n in range(j):
-            a = input("What element would you like in row "+str(m+1)+" column "+str(n+1)+"?:")
-            input_matrix(a, m, n, A)
-    return(A)
+def multiply():
+    rows = int(input('Please give the dimensions of your matrices. # of rows for matrix A?:'))
+    print()
+    col_rows = int(input('# of columns for matrix A / rows for matrix B?:'))
+    print()
+    columns = int(input('# of columns for matrix B?:'))
+    print()
+    print('Please give entries for matrix A:')
+    print()
+    A = matrix(rows, col_rows)
+    print()
+    print('Please give entries for matrix B:')
+    print()
+    B = matrix(col_rows, columns)
+    print()
+    print_matrix(np.dot(A, B))
+    return(np.dot(A, B))
 
-# Makes matrix with elements in each entry
-# No parameters
-# Returns matrix A
-
-A = matrix(3, 4)
-print_matrix(A)
-A = input_matrix(1, 2, 2, A)
-print_matrix(A)
+def addition():
+    rows = int(input('Please give the dimensions of your matrices. # of rows?:'))
+    print()
+    columns = int(input('# of columns?:'))
+    print()
+    print('Please give entries for matrix A:')
+    print()
+    A = matrix(rows, columns)
+    print()
+    print('Please give entries for matrix B:')
+    print()
+    B = matrix(rows, columns)
+    print()
+    print_matrix(np.add(A, B))
+    return(np.add(A, B))
