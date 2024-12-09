@@ -26,7 +26,6 @@ def new_matrix(rows, columns):
             print_matrix(A)
             print("============================================", end = '\n\n')
     return A
-       
 
 # Produces matrix (with elements) with dimensions that are input. 
 # Parameters are number of rows and number of columns
@@ -38,7 +37,7 @@ def print_matrix(matrx):
     print()
 
 # Prints matrix, row by row
-# Parameter is matrix array
+# Parameter is matrix array A
 # Returns nothing
 
 def dot(a = '', b = ''):
@@ -60,6 +59,10 @@ def dot(a = '', b = ''):
     b = new_matrix(rows, 1)
     print(np.dot(np.transpose(a), b)[0][0])
     return('')
+
+# Dots two vectors
+# Parameters are vector arrays a and b
+# Returns an empty string
 
 def scalar_m(A = ''):
     if not isinstance(A, np.ndarray):
@@ -86,6 +89,10 @@ def scalar_m(A = ''):
             print('Invalid scalar multiple, please try something else\n')
     print_matrix(c * A)
     return(c * A)
+
+# Multiplies a matrix array by a scalar
+# Parameter is matrix array A
+# Returns scaled matrix
 
 def multiply(A = '', B = ''):
     if not isinstance(A, np.ndarray):
@@ -124,6 +131,10 @@ def multiply(A = '', B = ''):
     print_matrix(np.dot(A, B))
     return(np.dot(A, B))
 
+# Multiplies two matrices
+# Parameters are two matrix arrays A and B
+# Returns matrix product
+
 def addition(A = '', B = ''):
     if not isinstance(A, np.ndarray):
         rows = input('Please give the dimensions of your matrices. # of rows?:\n')
@@ -150,6 +161,10 @@ def addition(A = '', B = ''):
     print_matrix(np.add(A, B))
     return(np.add(A, B))
 
+# Adds two matrices
+# Parameters are matrix arrays A and B
+# Returns sum of two matrices
+
 def solve(A = ''):
     if not isinstance(A, np.ndarray):
         rows = input('Please give the dimensions of your matrices. # of rows?:\n')
@@ -170,6 +185,10 @@ def solve(A = ''):
     A = np.array(A).astype(np.float64)
     print_matrix(A)
     return A
+
+# Solves linear system represented by the matrix
+# Parameter is matrix array A
+# Returns reduced row echelon form of matrix
 
 def start():
     print('\nHello! Welcome to the David Bowser linear algebra calculator!\nPlease see the following for a list of commands, then type your command')
@@ -216,4 +235,8 @@ def start():
         else:
             print('Sorry, that is an invalid command. Please try something else')
             
+# Runs interface to navigate calculator
+# No parameters
+# Returns nothing
+
 start()
